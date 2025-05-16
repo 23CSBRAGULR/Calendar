@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+//The main and only class
 public class Calendar {
 
     //The public, static array which contains all the months
@@ -84,6 +85,7 @@ public class Calendar {
         return day;
     }
 
+    //The main method
     public static void main(String[] args) {
         Scanner inputs = new Scanner(System.in);
 
