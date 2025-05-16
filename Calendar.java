@@ -2,13 +2,17 @@ import java.util.Scanner;
 
 public class Calendar {
 
-    public static final String days[] = {
-        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
-    };
     public static final String months[] = {
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     };
+    public static final String days[] = {
+        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
+    };
+
+    public static String months(int input) {
+        return months[input - 1];
+    }
 
     public static boolean ifLeapYear(int year) {
         boolean eligibility = false;
@@ -41,10 +45,6 @@ public class Calendar {
         return limit;
     }
 
-    public static String months(int input) {
-        return months[input - 1];
-    }
-
     public static int yearBeginning(int year) {
         int firstDay = year - 1900;
         for(int i = 1900; i < year; i++) {
@@ -63,16 +63,16 @@ public class Calendar {
         return firstDay;
     }
 
+    public static String days(int dayNumber) {
+        return days[dayNumber];
+    }
+
     public static String dayOfTheWeek(int year, int month, int date) {
         int firstDay = monthBeginning(year, month);
         int randomDay = firstDay + date;
         randomDay %= 7;
         String day = days(randomDay);
         return day;
-    }
-
-    public static String days(int dayNumber) {
-        return days[dayNumber];
     }
 
     public static void main(String[] args) {
@@ -98,6 +98,7 @@ public class Calendar {
             System.out.print("Enter a Valid Date : ");
             date = inputs.nextInt();
         }
+        inputs.close();
 
         System.out.println("\nYear\t: " + year);
         System.out.println("Month\t: " + months(month));
