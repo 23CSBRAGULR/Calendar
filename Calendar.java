@@ -2,18 +2,22 @@ import java.util.Scanner;
 
 public class Calendar {
 
+    //The public, static array which contains all the months
     public static final String months[] = {
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     };
+    //The other public, static array which contains all the days
     public static final String days[] = {
         "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
     };
 
+    //This method returns the month using the month array
     public static String months(int input) {
         return months[input - 1];
     }
 
+    //This month checks whether a year is a Leap Year
     public static boolean ifLeapYear(int year) {
         boolean eligibility = false;
         if(year % 4 == 0) {
@@ -29,6 +33,7 @@ public class Calendar {
         return eligibility;
     }
 
+    //This methods returns the day limit of a specific month
     public static int monthDayLimit(int year, int month) {
         int limit = 31;
         if(month == 4 || month == 6 || month == 9 || month == 11) {
@@ -45,6 +50,7 @@ public class Calendar {
         return limit;
     }
 
+    //This method returns the day number(unprocessed) of the first day of a specific year
     public static int yearBeginning(int year) {
         int firstDay = year - 1900;
         for(int i = 1900; i < year; i++) {
@@ -55,6 +61,7 @@ public class Calendar {
         return firstDay;
     }
 
+    //This method returns the day Number(unprocessed) of the first day of a specific month
     public static int monthBeginning(int year, int month) {
         int firstDay = yearBeginning(year);
         for(int i = 1; i < month; i++) {
@@ -63,10 +70,12 @@ public class Calendar {
         return firstDay;
     }
 
+    //This method fetches the day number and returns the day respective to that number
     public static String days(int dayNumber) {
         return days[dayNumber];
     }
 
+    //This method processes the day numbers of both year and month beginning methods and returns the required day
     public static String dayOfTheWeek(int year, int month, int date) {
         int firstDay = monthBeginning(year, month);
         int randomDay = firstDay + date;
@@ -107,12 +116,15 @@ public class Calendar {
 
         System.out.println("\nMonth Calendar\n");
         System.out.println("Sun\tMon\tTue\tWed\tThu\tFri\tSat");
+        
+        //A loop for correcting the allignment of the dates respective to the day column and a specific count variable for counting the displacement
         int count = 0;
         int monthBeginning = (monthBeginning(year, month)) % 7;
         for(int i = 0; i <= monthBeginning; i++) {
             count++;
             System.out.print("\t");
         }
+        //A loop that prints the specific month's Calender which starts printing the alligned values based on the count variable
         for(int i = 1; i <= monthDayLimit(year, month); i++) {
             String dates = i + "\t";
             count++;
