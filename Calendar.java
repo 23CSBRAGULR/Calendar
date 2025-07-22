@@ -1,3 +1,5 @@
+package Calendar;
+
 import java.util.Scanner;
 
 //The main and only class
